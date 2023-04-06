@@ -1,43 +1,87 @@
 {
-  "name": "react-tabulous",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.23",
-    "@types/react": "^18.0.33",
-    "@types/react-dom": "^18.0.11",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+	"name": "react-component-library",
+	"version": "0.1.0",
+	"private": true,
+	"main": "lib/index.js",
+	"module": "lib/index.esm.js",
+	"types": "lib/index.d.ts",
+	"files": [
+		"lib"
+	],
+	"lint-staged": {
+		"*.{js,jsx,json,css}": [
+			"npm run prettier:fix"
+		],
+		"*.{js, jsx, ts, tsx}": [
+			"npm run lint:fix"
+		]
+	},
+	"scripts": {
+		"prepare": "husky install",
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"lint": "eslint --ignore-path .eslintignore ./src",
+		"lint:fix": "npm run lint --fix",
+		"prettier": "prettier . -c --config .prettierrc",
+		"prettier:fix": "prettier . -c --config .prettierrc --write",
+		"rollup": "rm -rf lib && rollup -c",
+		"build:dev": "npm run build:rollup && npm pack",
+		"npm-publish": "npm i && npm run build:dev && npm publish"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@rollup/plugin-babel": "6.0.3",
+		"@rollup/plugin-commonjs": "^24.0.1",
+		"@rollup/plugin-image": "3.0.2",
+		"@rollup/plugin-node-resolve": "^15.0.2",
+		"@rollup/plugin-terser": "0.4.0",
+		"@rollup/plugin-typescript": "11.1.0",
+		"@testing-library/jest-dom": "^5.16.5",
+		"@testing-library/react": "^14.0.0",
+		"@testing-library/user-event": "^14.4.3",
+		"@types/jest": "^29.5.0",
+		"@types/node": "^18.15.11",
+		"@types/react": "^18.0.33",
+		"@types/react-dom": "^18.0.11",
+		"@typescript-eslint/eslint-plugin": "^5.57.1",
+		"eslint": "^8.37.0",
+		"eslint-config-prettier": "8.8.0",
+		"eslint-config-standard-with-typescript": "^34.0.1",
+		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-n": "^15.7.0",
+		"eslint-plugin-prettier": "^4.2.1",
+		"eslint-plugin-promise": "^6.1.1",
+		"eslint-plugin-react": "^7.32.2",
+		"eslint-plugin-react-hooks": "4.6.0",
+		"husky": "^8.0.3",
+		"prettier": "2.8.7",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-scripts": "5.0.1",
+		"rollup": "^3.20.2",
+		"rollup-plugin-dts": "5.3.0",
+		"rollup-plugin-peer-deps-external": "^2.2.4",
+		"rollup-plugin-postcss": "^4.0.2",
+		"rollup-plugin-react-svg": "3.0.3",
+		"typescript": "^5.0.3",
+		"web-vitals": "^3.3.1"
+	},
+	"peerDependencies": {
+		"react": ">=18.0.0",
+		"react-dom": ">=18.0.0"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
 }
